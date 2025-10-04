@@ -50,8 +50,8 @@ on:
         default: ''
 
 env:
-  DOCKER_IMAGE: ${{ secrets.DOCKER_IMAGE || 'lscr.io/linuxserver/webtop:latest' }} 
-  MEMORY: ${{ secrets.MEMORY || '1536M' }} # dorowu/ubuntu-desktop-lxde-vnc:latest
+  DOCKER_IMAGE: ${{ secrets.DOCKER_IMAGE || 'dorowu/ubuntu-desktop-lxde-vnc:latest' }} 
+  MEMORY: ${{ secrets.MEMORY || '1536M' }}
   DISK: ${{ secrets.DISK || '8192M' }}
 
 jobs:
