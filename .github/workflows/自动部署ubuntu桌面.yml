@@ -50,9 +50,9 @@ on:
         default: ''
 
 env:
-  DOCKER_IMAGE: ${{ secrets.DOCKER_IMAGE || 'dorowu/ubuntu-desktop-lxde-vnc:latest' }} 
+  DOCKER_IMAGE: ${{ secrets.DOCKER_IMAGE || 'dorowu/ubuntu-desktop-lxde-vnc' }} 
   MEMORY: ${{ secrets.MEMORY || '1536M' }}
-  DISK: ${{ secrets.DISK || '8192M' }}
+  DISK: ${{ secrets.DISK || '2048M' }}
 
 jobs:
   deploy-app:
@@ -233,7 +233,7 @@ jobs:
 
     - name: Deploy application
       run: |
-        if cf push ${{ env.APP_NAME }} --docker-image ${{ env.DOCKER_IMAGE }} -m ${{ env.MEMORY }} -k ${{ env.DISK }} --var PASSWORD=123456 --health-check-type port; then
+        if cf push ${{ env.APP_NAME }} --docker-image ${{ env.DOCKER_IMAGE }} -m ${{ env.MEMORY }} -k ${{ env.DISK }} --var VNC_PASSWORD=123456 --health-check-type port; then
           echo "Deployment successful"
         else
           cf delete ${{ env.APP_NAME }} -r -f 
